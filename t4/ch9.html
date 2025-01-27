@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //576
+        function press(event) {
+            c = event.key
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                alert(event.keyCode + " Key entered was a vowel " + event.key)
+            }
+            else {
+                alert(event.keyCode)
+            }
+        }
+        function bcgChnage() {
+            document.body.style.backgroundColor = "blue";
+        }
+
+        //577
+        function onblurFun() {
+            const text = document.getElementById("text");
+            const paragraph = document.getElementById("para");
+
+            paragraph.innerHTML = text.value.toLowerCase();
+
+            text.style.backgroundColor = 'red';
+        }
+
+        //578
+        function onFocus() {
+            const text = document.getElementById('text').style.backgroundColor = 'red';
+        }
+        function onChange(id) {
+            id.value = id.value.toUpperCase();
+        }
+
+        //579
+        function validateForm() {
+            // Get form field values
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const email = document.getElementById("email").value;
+
+            // Define regex patterns
+            const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{4,9}$/;
+            const passwordRegex = /^(?=.*[0-9])(?=.*[@#$%^&*_-]).{6,}$/;
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+
+            // Validate username
+            if (!usernameRegex.test(username)) {
+                alert("Invalid Username! It must be 5-10 characters long and cannot start with special characters.");
+                return false;
+            }
+
+            // Validate password
+            if (!passwordRegex.test(password)) {
+                alert("Invalid Password! It must contain at least one digit, one special character, and be at least 6 characters long.");
+                return false;
+            }
+
+            // Validate email
+            if (!emailRegex.test(email)) {
+                alert("Invalid Email! Please enter a valid email address.");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+
+        //580 and 582
+        function calculate() {
+            const dateInput = document.getElementById('date').value;
+            const date1 = new Date(dateInput)
+            const date2 = new Date()
+            const christmas = new Date()
+            const para = document.getElementById('display')
+
+
+            christmas.setFullYear(2025)
+            christmas.setMonth(11)
+            christmas.setDate(25)
+            const oneDay = 24 * 60 * 60 * 1000
+
+            let ms_remaining_christmas = Math.abs(christmas - date1)
+            let days_remaining_christmas = Math.floor(ms_remaining_christmas / oneDay)
+            let ms_remaining = Math.abs(date1 - date2)
+            let days_remaining = Math.floor(ms_remaining / oneDay)
+            para.innerHTML = `${days_remaining} ${days_remaining_christmas}`;
+        }
+
+        //587
+        function change(id) {
+            const element = document.getElementById(id)
+            id.innerHTML = "Hello World"
+            id.style.fontStyle = "italic"
+            id.style.fontSize = '50px'
+        }
+        function red() {
+            const heading = document.getElementById('heading').style.color = 'red'
+        }
+        function blue() {
+            const heading = document.getElementById('heading').style.color = 'blue'
+        }
+
+        //588
+        function validate() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+
+            const nameValid = /^[a-zA-Z_]+$/;
+            const phoneValid = /^\d{10}$/;
+            const emailValid = /^[a-zA-Z0-9]+([._%+-][a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+$/
+
+            if (!nameValid.test(name)) {
+                alert("Please enter a valid name")
+                return false;
+            }
+            if (!phoneValid.test(phone)) {
+                alert("Please enter a valid phone number")
+                return false;
+            }
+            if (!emailValid.test(email)) {
+                alert("Please enter a valid email")
+                return false;
+            }
+
+            alert("Success")
+            return true;
+        }
+
+        //590
+        function valid() {
+            const phone = document.getElementById("phone").value;
+            const email = document.getElementById("email").value;
+
+            const phoneCheck = /^[98][0-9]{9}$/;
+            const emailCheck = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9]{2,}$/;
+
+            if (!phoneCheck.test(phone)) {
+                alert("Please enter a valid phone number")
+            }
+            else if (!emailCheck.test(email)) {
+                alert("Please enter a valid email")
+            }
+            else {
+                alert("Success!")
+            }
+        }
+
+        //591
+        function fun1() {
+            const element = document.getElementById("heading");
+            element.innerHTML = "Hello World";
+            element.style.color = 'red';
+        }
+        function fun2() {
+            const element = document.getElementById("heading");
+            element.innerHTML = "Heading";
+            element.style.color = 'black';
+        }
+        function fun3() {
+            document.body.style.backgroundColor = 'black';
+        }
+        function fun4(id) {
+            document.body.style.backgroundColor = 'cyan';
+        }
+
+        //604
+        function fun(e) {
+            val = e.button;
+            switch (val) {
+                case 0: alert("left click");
+                    break;
+                case 1: alert("middle click");
+                    break;
+                case 2: alert("right click");
+                    break;
+            }
+        }
+
+        //609
+        function calculator(){
+            const display = document.getElementById("display");
+            
+        }
+
+    </script>
+</head>
+<!-- 576 <body onkeypress="press(event)" onkeyup="bcgChnage()"> -->
+
+<body>
+    <!-- 577 578 
+    <label for="text">Enter Text:</label>
+    <input type="text" name="text" id="text" onblur="onblurFun()" >
+    <input type="text" name="text" id="text" onfocus="onFocus()" onchange="onChange(this)">
+    <p id="para"></p> -->
+
+    <!-- 579
+    <h1>Registration Form</h1>mm
+    <form onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <button type="submit">Register</button>
+    </form> -->
+
+    <!-- 580 and 582
+     <input type="date" name="date" id="date">
+    <input type="button" onclick="calculate()" value="Calculate">
+    <p id="display"></p> -->
+
+    <!-- 587
+    <h1 id="heading" onclick="change(this)">Heading</h1>
+    <button onclick="red()">Red</button>
+    <button onclick="blue()">Blue</button> -->
+
+    <!--  588
+    <form onsubmit="return validate()">
+        Name:<input type="text" id="name">
+        Phone:<input type="text" id="phone">
+        Email:<input type="text" id="email">
+        <input type="submit" value="Submit">
+    </form> -->
+
+    <!-- 590
+    Phone : <input type="text" name="phone" id="phone">
+    Email : <input type="text" id="email">
+    <input type="button" onclick="valid()" value="Click"> -->
+
+    <!-- 591 
+    <h1 onmouseover="fun1()" onmouseout="fun2()" onmousedown="fun3()" onmouseup="fun4()" id="heading">Heading</h1> -->
+
+    <!-- <div style="width:50%;height:50%; border:2px solid pink;" onmousedown="fun(event)"></div> -->
+
+    <h2>Calculator</h2>
+    <input type="text" id="display" disabled>
+    <br>
+    <button onclick="appendValue('7')">7</button>
+    <button onclick="appendValue('8')">8</button>
+    <button onclick="appendValue('9')">9</button>
+    <button onclick="appendValue('/')">/</button>
+    <br>
+    <button onclick="appendValue('4')">4</button>
+    <button onclick="appendValue('5')">5</button>
+    <button onclick="appendValue('6')">6</button>
+    <button onclick="appendValue('*')">*</button>
+    <br>
+    <button onclick="appendValue('1')">1</button>
+    <button onclick="appendValue('2')">2</button>
+    <button onclick="appendValue('3')">3</button>
+    <button onclick="appendValue('-')">-</button>
+    <br>
+    <button onclick="appendValue('0')">0</button>
+    <button onclick="appendValue('.')">.</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="appendValue('+')">+</button>
+    <br>
+    <button onclick="clearDisplay()">C</button>
+</body>
+
+</html>

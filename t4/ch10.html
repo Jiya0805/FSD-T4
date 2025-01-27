@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //617
+        function fun(...a) {
+            let evensum = 0
+            let oddsum = 0
+            console.log(a)
+            for (let i in a) {
+                i = parseInt(i)
+                if (i % 2 == 0) {
+                    evensum += i
+                }
+                else {
+                    oddsum += i
+                }
+            }
+            console.log(`Evensum: ${evensum} and Oddsum : ${oddsum}`)
+        }
+        //fun(1,2,3,4,5,6,7,8,9,10)
+
+        //621
+        function concateArray() {
+            let a = [1, 2, 3, 4]
+            let b = [5, 6, 7, 8]
+            let c = [9, 10]
+
+            let d = [...a, ...b, ...c]
+
+            console.log(`New Array : ${d}`)
+        }
+        //concateArray()
+
+        //622
+        const names = ["Sophia", "Liam", "Olivia", "Emma", "Noah"];
+
+        const sortedNames = names.sort((a, b) => a.localeCompare(b));
+
+        console.log("Sorted Names:", sortedNames);
+
+
+        //628
+        function fun2(bcg, textcolor, size = '50px', style = 'italic') {
+            const heading = document.getElementById("head");
+            heading.style.backgroundColor = bcg;
+            heading.style.color = textcolor;
+            heading.style.fontSize = size;
+            heading.style.fontStyle = style;
+        }
+
+        //633
+        const periTri = (a = 5, b = 5, c = 5) => (a + b + c);
+        const periRect = (a = 5, b = 5) => 2 * (a + b);
+        const areaTri = (b = 5, h = 5) => (0.5 * b * h)
+        const areaRect = (a = 5, b = 5) => (a * b)
+        /*console.log(periTri(2,4))
+        console.log(periTri(2,4,5))
+        console.log(periRect(2,4,5))
+        console.log(periRect(2,4))
+        console.log(areaTri(2,4))
+        console.log(areaTri())
+        console.log(areaRect())
+        console.log(areaRect(2,4))*/
+
+        //634
+        class Time {
+            constructor(hours, minutes, seconds) {
+                this.hours = hours;
+                this.minutes = minutes;
+                this.seconds = seconds;
+            }
+
+            static addTimes(time1, time2) {
+                let totalSeconds = time1.seconds + time2.seconds;
+                let totalMinutes = time1.minutes + time2.minutes + Math.floor(totalSeconds / 60);
+                let totalHours = time1.hours + time2.hours + Math.floor(totalMinutes / 60);
+
+                return new Time(
+                    totalHours,
+                    totalMinutes % 60,
+                    totalSeconds % 60
+                );
+            }
+
+            displayTime() {
+                return `${this.hours}h ${this.minutes}m ${this.seconds}s`;
+            }
+        }
+
+        const time1 = new Time(2, 45, 50);
+        const time2 = new Time(1, 20, 30);
+
+
+        const time3 = Time.addTimes(time1, time2);
+
+        console.log("Time 1:", time1.displayTime());
+        console.log("Time 2:", time2.displayTime());
+        console.log("Time after addition:", time3.displayTime());
+
+        //650
+        class Point {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            // Static method to calculate the distance between two points
+            static distance(point1, point2) {
+                const dx = point2.x - point1.x;
+                const dy = point2.y - point1.y;
+                return Math.sqrt(dx ** 2 + dy ** 2).toFixed(2); // Rounded to 2 decimal places
+            }
+        }
+
+        // Creating two point objects
+        const point1 = new Point(3, 4);
+        const point2 = new Point(7, 1);
+
+        // Calculating the distance between the points
+        const distance = Point.distance(point1, point2);
+
+        console.log(`Point 1: (${point1.x}, ${point1.y})`);
+        console.log(`Point 2: (${point2.x}, ${point2.y})`);
+        console.log(`Distance between the points: ${distance}`);
+
+
+
+        //651
+        function prime(n, m) {
+            for (var i = n; i < m; i++) {
+                let count = 0
+                for (var j = 1; j <= i; j++) {
+                    if (i % j == 0) {
+                        count++
+                    }
+                }
+                if (count == 2) {
+                    console.log(i)
+                }
+            }
+        }
+        //prime(1,10)
+
+        //652
+        function secondHighest(...a) {
+            let max = 0
+            let smax = 0
+
+            for (var i of a) {
+                if (i > max) {
+                    smax = max
+                    max = i
+                }
+                else if (i > smax && i !== max) {
+                    smax = i
+                }
+            }
+            console.log(smax)
+        }
+        //secondHighest(2,11,3,4,5,6,7,8)
+
+        //654
+        const findGCD = (a, b) => {
+            while (b !== 0) {
+                const temp = b;
+                b = a % b; 
+                a = temp; 
+            }
+            return a; 
+        };
+        
+        const num1 = 56;
+        const num2 = 98;
+
+        const gcd = findGCD(num1, num2);
+        console.log(`The GCD of ${num1} and ${num2} is: ${gcd}`);
+
+
+        //655
+        function fun3(size, color, text = "Good Morning") {
+            const heading = document.getElementById("heading");
+            heading.innerHTML = text;
+            heading.style.fontSize = size;
+            heading.style.color = color;
+
+            const img = document.getElementsByTagName("img")[0];
+            img.src = "img2.png"
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <h1 id="head">Heading</h1>
+    <input type="button" value="Click Me" onclick="fun2('cyan','blue')"> -->
+
+    <h1 id="heading">Hello World</h1>
+    <img src="img1.png" alt="" class="" style="width: 100px;height:100px">
+    <input type="button" value="Submit" onclick="fun3('50px','blue')">
+</body>
+
+</html>

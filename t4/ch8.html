@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //514
+        function f(x, n) {
+            let a = 0;
+            let result = 0;
+            while (a <= n) {
+                if (a % 2 == 0) {
+                    result = result + Math.pow(x, a);
+                }
+                else {
+                    result = result - Math.pow(x, a);
+                }
+                a = a + 1;
+            }
+            return result;
+        }
+        //console.log(f(2,4))
+
+        //518
+        function getTotalPrice(groceries) {
+            let totalPrice = 0;
+
+            for (const grocery of groceries) {
+                totalPrice += grocery.quantity * grocery.price;
+            }
+
+            return totalPrice;
+        }
+
+        const groceries = [
+            { product: "Milk", quantity: 1, price: 1.5 },
+            { product: "Bread", quantity: 2, price: 2.5 },
+            { product: "Eggs", quantity: 12, price: 0.15 },
+        ];
+
+        const total = getTotalPrice(groceries);
+        //console.log("Total price:", total); 
+
+
+        //519
+        function getOccurance(str, find) {
+            let count = 0;
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] == find) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        //console.log(getOccurance('school', 'o'))
+
+        //525
+        function fact(n) {
+            let result = 1;
+            if (n == 1 | n == 0) {
+                return 1;
+            }
+            for (let i = 2; i <= n; i++) {
+                result = result * i;
+            }
+            return result;
+        }
+        //console.log(fact(5))
+
+        //534
+        function arm(a) {
+            let sum = 0;
+            let temp = a;
+
+            while (temp > 0) {
+                const digit = temp % 10;
+                sum += Math.pow(digit, 3);
+                temp = Math.floor(temp / 10);
+            }
+
+            return sum === a;
+        }
+
+        //console.log(arm(153));
+        //console.log(arm(121));
+
+        //550
+        function Hundred(a) {
+            if (a > 100) {
+                return "Greater than 100";
+            } else {
+                return "Less than 100";
+            }
+        }
+        //console.log(Hundred(80));
+        //console.log(Hundred(180));
+
+        //551
+        function fun(a) {
+            if (a > 100) {
+                console.log("Enter a 2 digit number")
+            }
+            else {
+                res = 1
+                n1 = a % 10
+                n2 = Math.floor(a / 10)
+                for (var i = 0; i < n1; i++) {
+                    res = res * n2
+                }
+                console.log("Result: " + res)
+            }
+        }
+        //fun(23)
+
+        //553
+        function oddPosition(str){
+            for(i=0;i<str.length;i++){
+                if(i%2!=0){
+                    continue;
+                }
+                else{
+                    console.log(str[i]);
+                }
+            }
+        }
+        //oddPosition('India')
+
+        //554
+        function prime(){
+            let count=0
+            n=2
+            while(count<10){
+                var c=0
+                for(var i=1;i<=n;i++){
+                    if(n%i==0){
+                        c++
+                    }
+                }
+                if(c==2){
+                    count++
+                    console.log(n)
+                    
+                }
+                n++
+            }
+        }
+        //prime()
+
+        //555
+        function daysLeft(d1){
+            d2 = new Date()
+            oneday = 24*60*60*1000
+
+            day_ms=Math.abs(d1-d2)
+            days = Math.floor(day_ms/oneday)
+            console.log(days)
+        }
+        d1 = new Date()
+        d1.setMonth(5)
+        d1.setDate(24)
+        d1.setFullYear(2025)
+        //daysLeft(d1)
+
+        //556
+        function sortDescending(arr) {
+            return arr.sort((a, b) => b - a);
+        }
+        
+        const array = [5, 2, 9, 1, 6, 3];
+        const sortedArray = sortDescending(array);
+        
+        //console.log("Original Array:", array);
+        //console.log("Sorted Array in Descending Order:", sortedArray);
+        
+        //557
+        function oddDivisibleBy7(n){
+            var count=0
+            var i=0
+            while(count<n){
+                if((i%2)!=0 && (i%7)==0){
+                    count++
+                    console.log(i)
+                }
+                i++
+            }
+        }
+        //oddDivisibleBy7(5)
+
+        //558
+        function check(price,tax,balance){
+            tot=price+tax
+            if(tot<balance){
+                alert("Yes")
+            }
+            else{
+                alert("No")
+            }
+        }
+        //check(1200,300,1200)
+        //check(1200,300,3000)
+
+        //559
+        function OddN(n){
+            n=parseInt(n);
+            count=0
+            var i=0
+            while(count<n){
+                if(i%2!=0){
+                    count++
+                    console.log(i)
+                }
+                i++
+            }
+        }
+
+        //560
+        function palindrome(str){
+            srtr=str.split('').reverse().join('');
+            if(srtr==str){
+                console.log("Palindrome")
+            }
+            else{
+                console.log("Not palindrome")
+            }
+        }
+        //palindrome("madam")
+        //palindrome("mad")
+
+        //561
+        function pattern(n){
+            for(var i=0;i<n;i++){
+                for(var j=0;j<=i;j++){
+                    if((i+j)%2==0){
+                        document.write(1)
+                    }
+                    else{
+                        document.write(0)
+                    }
+                }
+                document.write("<br>")
+            }
+        }
+        //pattern(5)
+
+
+        //562
+        function maxOf3(){
+            let a = prompt("A:","Number here")
+            let b = prompt("B:","Number here")
+            let c = prompt("C:","Number here")
+
+            arr = [a,b,c]
+            console.log(arr)
+            max = arr.sort()[arr.length-1]
+            alert(`Maximum of three is ${max}`)
+
+        }
+        //maxOf3()
+
+        //563
+        function generateFibonacci(N) {
+            N = parseInt(N);
+            if (N <= 0) {
+                console.log("Please enter a positive number.");
+                return;
+            }
+
+            let fibList = []; 
+            let a = 0, b = 1;
+
+            for (let i = 0; i < N; i++) {
+                fibList.push(a); 
+                let next = a + b;
+                a = b;
+                b = next;
+            }
+
+            console.log("Fibonacci List:", fibList);
+        }
+        //generateFibonacci(5)
+
+        //564
+        function foo(){
+            for(let i=0;i<=100;i++){
+                let n1=Math.pow(i,2)
+                let revn = reverse(n1)
+                let rev=reverse(i)
+                let revs = Math.pow(rev,2)
+
+                if(revn===revs){
+                    console.log(i)
+                }
+            }
+
+            function reverse(n){
+                let result=0
+                while(n>0){
+                    let r=n%10
+                    result=result*10 + r
+                    n=Math.floor(n/10)
+                }
+                return result
+            }
+        }
+        //foo()
+
+
+        //565
+        function luckyNo(n){
+            let sum=check(n)
+            if(sum==1){
+                console.log(`Lucky Number ${n}`)
+            }
+            else{
+                console.log(`Not Lucky Number ${n}`)
+            }
+
+            function check(n){
+                let sum=0
+                while(n>0){
+                    let r=n%10
+                    sum=sum+r
+                    n=Math.floor(n/10)
+                }
+                if (sum>=10){
+                    return check(sum)
+                }
+                else{
+                    return sum
+                }
+            }
+        }
+        //luckyNo(123)
+        //luckyNo(7777)
+
+        //566
+        function perfectNo(n){
+            let sum=0;
+            for(var i=1;i<n;i++){
+                if(n%i==0){
+                    sum+=i;
+                }
+            }
+            if(sum==n){
+                console.log(`${n} is Perfect Number`);
+            }else{
+                console.log(`${n} is not Perfect Number`);
+            }
+        }
+        //perfectNo(6)
+        //perfectNo(16)
+
+        //567
+        function fun1(str){
+            x=str.indexOf('a')
+            y=str.lastIndexOf('a')
+            return str.substring(x+1,y)
+        }
+        //console.log(fun1('ajanta'))
+
+        //568
+        //1)519
+        //2)567
+        //3)
+        var a=5;
+        var b=a++;
+        let c=--b;
+        c = ++a;
+        document.write(a,b,c);
+
+    </script>
+</head>
+
+<body>
+    Enter N : <input type="text" class="text" id="n">
+    <input type="button" value="Click" onclick="OddN(document.getElementById('n').value)">
+</body>
+
+</html>
